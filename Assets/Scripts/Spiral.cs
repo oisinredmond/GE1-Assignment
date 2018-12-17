@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Phyllotaxis : MonoBehaviour {
+public class Spiral : MonoBehaviour {
 
     public float theta, scale;
     public int nStart; // Starting number for n
@@ -16,14 +16,15 @@ public class Phyllotaxis : MonoBehaviour {
     private Vector2 pos;
     private TrailRenderer trailRenderer;
 
-    private Vector2 CalcPT(float calcTheta, float calcScale, int count)
+
+    private Vector2 CalcSpiral(float calcTheta, float calcScale, int count)
     {
         float angle = count * (calcTheta * Mathf.Deg2Rad);
-        float r = scale * calcScale * Mathf.Sqrt(count);
+        float r = calcScale * Mathf.Sqrt(count);
         float x = r * (float)Mathf.Cos(angle);
         float y = r * (float)Mathf.Sin(angle);
-        Vector2 pos = new Vector2(x, y);
-        return pos;
+        Vector2 position = new Vector2(x, y);
+        return position;
     }
 
     private void Awake()
@@ -31,7 +32,11 @@ public class Phyllotaxis : MonoBehaviour {
         //trailRenderer = GetComponent<TrailRenderer>();
         //n = nStart;
         //transform.localPosition = CalcPT(theta, scale, n);
+        n = nStart;
+        trailRenderer = GetComponent<TrailRenderer>();
+        transform.localPosition = CalcSpiral(theta, scale, n);
         LerpTrails();
+
     }
 
     private void FixedUpdate()
@@ -39,10 +44,21 @@ public class Phyllotaxis : MonoBehaviour {
         //pos = CalcPT(theta, scale, n);
         //transform.localPosition = new Vector3(pos.x, pos.y, 0);
         //n++;
-        n += steps;
         if (isLerping)
         {
             float timeElapsed = Time.time - lerpTime; // Check how far along the current lerp is
+            transform.localPosition = Vector3.Lerp(lerpStart, lerpEnd, timeElapsed / lerpInterval);
+            if(timeElapsed / lerpInterval >= 0.97f){
+                transform.localPosition = lerpEnd;
+                n += steps;
+                current++;
+                if(current < max){
+                    LerpTrails();
+                }
+                else{
+                    isLerping = false;
+                }
+            }
         }
     }
 
@@ -50,9 +66,9 @@ public class Phyllotaxis : MonoBehaviour {
     {
         isLerping = true;
         lerpTime = Time.time;
-        pos = CalcPT(theta, scale, n);
+        pos = CalcSpiral(theta, scale, n);
         lerpStart = this.transform.localPosition;
-        lerpEnd = new Vector3(pos.x, pos.y);
+        lerpEnd = new Vector3(pos.x, pos.y,0);
     }
 
     // Use this for initialization

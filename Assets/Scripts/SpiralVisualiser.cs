@@ -13,6 +13,12 @@ public class SpiralVisualiser : MonoBehaviour {
         GameObject spiralObject = Instantiate(spiralPrefab, new Vector3(0,0,0), Quaternion.identity);
         spiralObject.transform.parent = this.transform;
         Spiral spiralScript = spiralObject.GetComponent<Spiral>();
+        TrailRenderer tr = spiralObject.GetComponent<TrailRenderer>();
+        AnimationCurve curve = new AnimationCurve();
+        curve.AddKey(0.0f, 1.0f);
+        curve.AddKey(1.0f, 1.0f);
+        tr.widthCurve = curve;
+        tr.widthMultiplier = 0.1f;
         spiralScript.theta = 137.5f;
         spiralScript.scale = 1;
         spiralScript.steps = 1;
