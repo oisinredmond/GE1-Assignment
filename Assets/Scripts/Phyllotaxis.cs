@@ -8,6 +8,7 @@ public class Phyllotaxis : MonoBehaviour {
     public float theta, scale;
     public int n;
     public float dotScale;
+    private Vector2 pos;
 
     private Vector2 calcPT(float calcTheta, float calcScale, int count)
     {
@@ -25,6 +26,13 @@ public class Phyllotaxis : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {		
+	void Update () {
+        if (Input.GetKey(KeyCode.Space)){
+            pos = calcPT(theta, scale, n);
+            GameObject dotInstance = (GameObject)Instantiate(dot);
+            dotInstance.transform.position = new Vector3(pos.x, pos.y, 0);
+            dotInstance.transform.localScale = new Vector3(scale, scale, scale);
+            n++;
+        }
 	}
 }
