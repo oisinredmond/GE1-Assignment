@@ -22,7 +22,7 @@ public class AudioAnalyser : MonoBehaviour {
     {
         audioSource = GetComponent<AudioSource>();
         spectrum = new float[frameSize];
-        bands = new float[(int)Mathf.Log(frameSize, 2)];
+        freqBands = new float[(int)Mathf.Log(frameSize, 2)];
         audioSource.clip = audioClip;
         audioSource.outputAudioMixerGroup = master;
     }
@@ -40,6 +40,16 @@ public class AudioAnalyser : MonoBehaviour {
 
     void GetFreqBands()
     {
-
+        for (int i = 0; i < freqBands.Length; i++)
+        {
+            int start = (int)Mathf.Pow(2, i) - 1;
+            int width = (int)Mathf.Pow(2, i);
+            float avg = 0;
+            for(int j = start; j < start + width; j++)
+            {
+                avg += spectrum[j] * (j + 1);
+            }
+            freqBands[i] = avg;
+        }
     }
 }
