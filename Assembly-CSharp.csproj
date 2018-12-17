@@ -64,8 +64,8 @@
     <Compile Include="Assets\Scripts\AudioAnalyser.cs" />
     <Compile Include="Assets\Scripts\AudioVisualiser.cs" />
     <Compile Include="Assets\Scripts\Phyllotaxis.cs" />
-    <Compile Include="Assets\Scripts\SpawnSpirals.cs" />
     <Compile Include="Assets\Scripts\Spiral.cs" />
+    <Compile Include="Assets\Scripts\SpiralVisualiser.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/oisin/Desktop/Game Engines/GE1-Assignment/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
