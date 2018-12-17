@@ -15,6 +15,11 @@ public class AudioAnalyser : MonoBehaviour {
     public static float[] spectrum;
     public static float[] bands;
 
+    public void Awake()
+    {
+        
+    }
+
     // Use this for initialization
     void Start () {
 		
