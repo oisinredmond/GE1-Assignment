@@ -35,7 +35,8 @@ public class AudioAnalyser : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+        audioSource.GetSpectrumData(spectrum, 0, FFTWindow.Hamming);
+        GetFreqBands();
 	}
 
     void GetFreqBands()
