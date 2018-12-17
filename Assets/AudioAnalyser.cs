@@ -14,7 +14,7 @@ public class AudioAnalyser : MonoBehaviour {
 
     public static int frameSize = 512;
     public static float[] spectrum;
-    public static float[] bands;
+    public static float[] freqBands;
     public float binWidth;
     public float sampleRate;
 
@@ -37,4 +37,9 @@ public class AudioAnalyser : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    void GetFreqBands()
+    {
+
+    }
 }
