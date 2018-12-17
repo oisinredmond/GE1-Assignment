@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class Phyllotaxis : MonoBehaviour {
 
-    public GameObject dot;
     public float theta, scale;
-    public int n;
+    public int nStart;
+    private int n;
     public float dotScale;
     private Vector2 pos;
+    private TrailRenderer trailRenderer;
 
-    private Vector2 calcPT(float calcTheta, float calcScale, int count)
+    private Vector2 CalcPT(float calcTheta, float calcScale, int count)
     {
         float angle = count * (calcTheta * Mathf.Deg2Rad);
         float r = scale * calcScale * Mathf.Sqrt(count);
@@ -20,19 +21,28 @@ public class Phyllotaxis : MonoBehaviour {
         return pos;
     }
 
+    private void Awake()
+    {
+        trailRenderer = GetComponent<TrailRenderer>();
+        n = nStart;
+        transform.localPosition = CalcPT(theta, scale, n);
+    }
+
+    private void FixedUpdate()
+    {
+        pos = CalcPT(theta, scale, n);
+        transform.localPosition = new Vector3(pos.x, pos.y, 0);
+        n++;
+    }
+
     // Use this for initialization
     void Start () {
 		
 	}
-	
-	// Update is called once per frame
-	void Update () {
-        if (Input.GetKey(KeyCode.Space)){
-            pos = calcPT(theta, scale, n);
-            GameObject dotInstance = (GameObject)Instantiate(dot);
-            dotInstance.transform.position = new Vector3(pos.x, pos.y, 0);
-            dotInstance.transform.localScale = new Vector3(scale, scale, scale);
-            n++;
-        }
-	}
+
+    private void Update()
+    {
+        
+    }
+
 }
