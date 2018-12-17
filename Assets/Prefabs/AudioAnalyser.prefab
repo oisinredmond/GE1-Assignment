@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 82520663588838534}
   - component: {fileID: 114506607753878224}
   m_Layer: 0
-  m_Name: AudioAnalyzer
+  m_Name: AudioAnalyser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
