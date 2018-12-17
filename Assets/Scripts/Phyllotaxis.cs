@@ -6,8 +6,13 @@ public class Phyllotaxis : MonoBehaviour {
 
     public float theta, scale;
     public int nStart;
-    private int n;
+    public int steps, max;
     public float dotScale;
+    public float lerpInterval;
+
+    private int n, current;
+    private Vector3 lerpStart, lerpEnd;
+    private float lerpTime;
     private Vector2 pos;
     private TrailRenderer trailRenderer;
 
@@ -23,9 +28,9 @@ public class Phyllotaxis : MonoBehaviour {
 
     private void Awake()
     {
-        trailRenderer = GetComponent<TrailRenderer>();
-        n = nStart;
-        transform.localPosition = CalcPT(theta, scale, n);
+        //trailRenderer = GetComponent<TrailRenderer>();
+        //n = nStart;
+        //transform.localPosition = CalcPT(theta, scale, n);
     }
 
     private void FixedUpdate()
@@ -33,6 +38,11 @@ public class Phyllotaxis : MonoBehaviour {
         pos = CalcPT(theta, scale, n);
         transform.localPosition = new Vector3(pos.x, pos.y, 0);
         n++;
+    }
+
+    void LerpTrails()
+    {
+
     }
 
     // Use this for initialization
