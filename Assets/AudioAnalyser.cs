@@ -29,7 +29,8 @@ public class AudioAnalyser : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		
+        sampleRate = AudioSettings.outputSampleRate;
+        binWidth = AudioSettings.outputSampleRate / 2 / frameSize;
 	}
 	
 	// Update is called once per frame
