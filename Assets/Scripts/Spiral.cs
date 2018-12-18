@@ -67,11 +67,10 @@ public class Spiral : MonoBehaviour {
                 transform.localPosition = Vector3.Lerp(startLerp, endLerp, Mathf.Clamp01(lerpPosTimer));
                 if (lerpPosTimer >= 1)
                 {
-                    if(current >= max){
+                    print(current);
+                    if(current == max){
                         forward = false;
-                        print("Flipped");
                     }else if(current <= 0){
-                        print("Flipped");
                         forward = true;
                     }
 
@@ -82,7 +81,7 @@ public class Spiral : MonoBehaviour {
                         current++;
                     }else{
                         n -= steps;
-                        current++;
+                        current--;
                     }
 
                     SetLerpPositions();
