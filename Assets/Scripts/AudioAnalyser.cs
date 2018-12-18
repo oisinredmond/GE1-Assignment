@@ -1,56 +1,53 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Audio;
 
 [RequireComponent(typeof(AudioSource))]
-
-public class AudioAnalyser : MonoBehaviour {
-
-    public bool useMic = false;
-    public AudioClip audioClip;
+public class AudioAnalyser : MonoBehaviour
+{
     AudioSource audioSource;
-    public AudioMixerGroup master;
-
     public static int frameSize = 512;
     public static float[] spectrum;
-    public static float[] freqBands;
+    public static float[] bands;
     public float binWidth;
     public float sampleRate;
 
-    public void Awake()
+    // Use this for initialization
+    void Start()
     {
         audioSource = GetComponent<AudioSource>();
         spectrum = new float[frameSize];
-        freqBands = new float[(int)Mathf.Log(frameSize, 2)];
-        audioSource.clip = audioClip;
-        audioSource.outputAudioMixerGroup = master;
-    }
-
-    // Use this for initialization
-    void Start () {
+        bands = new float[(int)Mathf.Log(frameSize, 2)];
         sampleRate = AudioSettings.outputSampleRate;
         binWidth = AudioSettings.outputSampleRate / 2 / frameSize;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        audioSource.GetSpectrumData(spectrum, 0, FFTWindow.Hamming);
-        GetFreqBands();
-	}
+    }
 
-    void GetFreqBands()
+    // Update is called once per frame
+    void Update()
     {
-        for (int i = 0; i < freqBands.Length; i++)
+        GetSpectrumData();
+        GetFrequencyBands();
+    }
+
+    void GetSpectrumData()
+    {
+        audioSource.GetSpectrumData(spectrum, 0, FFTWindow.Hamming);
+    }
+
+    void GetFrequencyBands()
+    {
+        for (int i = 0; i < bands.Length; i++)
         {
             int start = (int)Mathf.Pow(2, i) - 1;
             int width = (int)Mathf.Pow(2, i);
-            float avg = 0;
-            for(int j = start; j < start + width; j++)
+            int end = start + width;
+            float average = 0;
+            for (int j = start; j < end; j++)
             {
-                avg += spectrum[j] * (j + 1);
+                average += spectrum[j] * (j + 1);
             }
-            freqBands[i] = avg;
+            average /= (float)width;
+            bands[i] = average;
         }
     }
 }

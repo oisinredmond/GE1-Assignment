@@ -51,3 +51,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7887aee9e36ab84584676513ccf8422, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spiralPrefab: {fileID: 1723428999409952, guid: 6fc24615a2838234895b59f8c617da39,
+    type: 2}
+  scale: 10
