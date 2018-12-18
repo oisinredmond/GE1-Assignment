@@ -5,7 +5,7 @@ using UnityEngine;
 public class Spiral : MonoBehaviour {
 
     public AudioAnalyser audioAnalyser;
-    public float theta, scale, interval;
+    public float theta, scale, interval, scaleAnimSpeed;
     public int nStart, steps, max;
     public Color trailColor;
     public Vector2 minMaxSpeed;
@@ -21,7 +21,7 @@ public class Spiral : MonoBehaviour {
     private TrailRenderer tr;
     private Vector3 startLerp, endLerp;
     private Vector2 pos;
-    private float lerpPosTimer, lerpSpeed, lerpTime, scaleTimer;
+    private float lerpPosTimer, lerpSpeed, lerpTime, scaleTimer, currScale;
    
     private Vector2 CalcSpiral(float calcTheta, float calcScale, int i)
     {
@@ -35,19 +35,20 @@ public class Spiral : MonoBehaviour {
 
     private void Awake()
     {
+        currScale = scale;
         isLerping = true;
         tr = GetComponent<TrailRenderer>();
         trailMat = new Material(tr.material);
         trailMat.SetColor("_TintColor", trailColor);
         tr.material = trailMat;
         n = nStart;
-        transform.localPosition = CalcSpiral(theta, scale, n);
+        transform.localPosition = CalcSpiral(theta, currScale, n);
         SetLerpPositions();
     }
 
     void SetLerpPositions() {
         lerpTime = Time.time;
-        pos = CalcSpiral(theta, scale, n);
+        pos = CalcSpiral(theta, currScale, n);
         startLerp = this.transform.localPosition;
         endLerp = new Vector3(pos.x, pos.y, 0);
     }
@@ -59,6 +60,21 @@ public class Spiral : MonoBehaviour {
 
     private void Update()
     {
+        if (scaling){
+            if (scaleCurve){
+                scaleTimer += (scaleAnimSpeed * AudioAnalyser.bands[freqBand]) * Time.deltaTime;
+                if(scaleTimer >= 1)
+                {
+                    scaleTimer -= 1;
+                }
+                currScale = Mathf.Lerp(scaleAnimMinMax.x, scaleAnimMinMax.y, scaleAnimCurve.Evaluate(scaleTimer));
+            }
+            else
+            {
+                currScale = Mathf.Lerp(scaleAnimMinMax.x, scaleAnimMinMax.y, AudioAnalyser.bands[freqBand]);
+            }
+        }
+
         if (lerpOnAudio)
         {
             if (isLerping)
