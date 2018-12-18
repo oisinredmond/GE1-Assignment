@@ -4,14 +4,21 @@ using UnityEngine;
 
 public class Spiral : MonoBehaviour {
 
-    public float theta, scale, lerpInterval;
+    public AudioAnalyser audioAnalyser;
+    public float theta, scale;
     public int nStart, steps, max;
+    public Color trailColor;
+    public Vector2 minMaxSpeed;
+    public AnimationCurve lerpAnimCurve;
+    public int lerpBand;
+
+    private Material trailMat;
     private int n, current;
     private bool isLerping;
     private TrailRenderer tr;
     private Vector3 startLerp, endLerp;
     private Vector2 pos;
-    private float lerpTime;
+    private float lerpPosTimer, lerpSpeed;
    
     private Vector2 CalcSpiral(float calcTheta, float calcScale, int i)
     {
@@ -25,18 +32,18 @@ public class Spiral : MonoBehaviour {
 
     private void Awake()
     {
-        //trailRenderer = GetComponent<TrailRenderer>();
-        //n = nStart;
-        //transform.localPosition = CalcPT(theta, scale, n);
+        isLerping = true;
         tr = GetComponent<TrailRenderer>();
+        trailMat = new Material(tr.material);
+        trailMat.SetColor("_TintColor", trailColor);
+        tr.material = trailMat;
         n = nStart;
         transform.localPosition = CalcSpiral(theta, scale, n);
-        StartLerping();
+        SetLerpPositions();
     }
 
-    void StartLerping() {
-        isLerping = true;
-        lerpTime = Time.time;
+    void SetLerpPositions() {
+
         pos = CalcSpiral(theta, scale, n);
         startLerp = this.transform.localPosition;
         endLerp = new Vector3(pos.x, pos.y, 0);
@@ -49,9 +56,20 @@ public class Spiral : MonoBehaviour {
 
     private void Update()
     {
-
+        if (isLerping){
+            lerpSpeed = Mathf.Lerp(minMaxSpeed.x, minMaxSpeed.y, lerpAnimCurve.Evaluate(AudioAnalyser.bands[lerpBand]));
+            lerpPosTimer += Time.deltaTime * lerpSpeed;
+            transform.localPosition = Vector3.Lerp(startLerp, endLerp, Mathf.Clamp01(lerpPosTimer));
+            if (lerpPosTimer >= 1){
+                lerpPosTimer -= 1;
+                n += steps;
+                current++;
+                SetLerpPositions();
+            }
+        }
     }
 
+    /*
     private void FixedUpdate()
     {
         if (isLerping){
@@ -71,6 +89,6 @@ public class Spiral : MonoBehaviour {
                 }
             }
         }
-    }
+    }*/
 
 }
