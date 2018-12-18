@@ -6,11 +6,12 @@ public class Spiral : MonoBehaviour {
 
     public AudioAnalyser audioAnalyser;
     public float theta, scale;
-    public int nStart, steps, max;
+    public int nStart, steps, max, interval;
     public Color trailColor;
     public Vector2 minMaxSpeed;
     public AnimationCurve lerpAnimCurve;
-    public int lerpBand;
+    public int freqBand;
+    public bool lerpOnAudio;
 
     private Material trailMat;
     private int n, current;
@@ -18,7 +19,7 @@ public class Spiral : MonoBehaviour {
     private TrailRenderer tr;
     private Vector3 startLerp, endLerp;
     private Vector2 pos;
-    private float lerpPosTimer, lerpSpeed;
+    private float lerpPosTimer, lerpSpeed, lerpTime;
    
     private Vector2 CalcSpiral(float calcTheta, float calcScale, int i)
     {
@@ -56,16 +57,40 @@ public class Spiral : MonoBehaviour {
 
     private void Update()
     {
-        if (isLerping){
-            lerpSpeed = Mathf.Lerp(minMaxSpeed.x, minMaxSpeed.y, lerpAnimCurve.Evaluate(AudioAnalyser.bands[lerpBand]));
-            transform.localScale = new Vector3(transform.localScale.x, (AudioAnalyser.bands[lerpBand] * 15) + 2, transform.localScale.z);
-            lerpPosTimer += Time.deltaTime * lerpSpeed;
-            transform.localPosition = Vector3.Lerp(startLerp, endLerp, Mathf.Clamp01(lerpPosTimer));
-            if (lerpPosTimer >= 1){
-                lerpPosTimer -= 1;
+        if (lerpOnAudio)
+        {
+            if (isLerping)
+            {
+                lerpSpeed = Mathf.Lerp(minMaxSpeed.x, minMaxSpeed.y, lerpAnimCurve.Evaluate(AudioAnalyser.bands[freqBand]));
+                transform.localScale = new Vector3(transform.localScale.x, (AudioAnalyser.bands[freqBand] * 15) + 2, transform.localScale.z);
+                lerpPosTimer += Time.deltaTime * lerpSpeed;
+                transform.localPosition = Vector3.Lerp(startLerp, endLerp, Mathf.Clamp01(lerpPosTimer));
+                if (lerpPosTimer >= 1)
+                {
+                    lerpPosTimer -= 1;
+                    n += steps;
+                    current++;
+                    SetLerpPositions();
+                }
+            }
+        }
+        else
+        {
+            float timeElapsed = Time.time - lerpTime; // Check how far along the current lerp is
+            transform.localPosition = Vector3.Lerp(startLerp, endLerp, timeElapsed / interval);
+            if (timeElapsed / interval >= 0.97f)
+            {
+                transform.localPosition = endLerp;
                 n += steps;
                 current++;
-                SetLerpPositions();
+                if (current < max)
+                {
+                    SetLerpPositions();
+                }
+                else
+                {
+                    isLerping = false;
+                }
             }
         }
     }
