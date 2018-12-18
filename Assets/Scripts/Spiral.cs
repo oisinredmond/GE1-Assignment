@@ -85,7 +85,6 @@ public class Spiral : MonoBehaviour {
                 transform.localPosition = Vector3.Lerp(startLerp, endLerp, Mathf.Clamp01(lerpPosTimer));
                 if (lerpPosTimer >= 1)
                 {
-                    print(current);
                     if(current == max){
                         forward = false;
                     }else if(current <= 0){
