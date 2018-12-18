@@ -110,7 +110,6 @@
     <Compile Include="Assets\Scripts\AudioVisualiser.cs" />
     <Compile Include="Assets\Scripts\Spiral.cs" />
     <Compile Include="Assets\Scripts\SpiralTunnel.cs" />
-    <Compile Include="Assets\Scripts\SpiralVisualiser.cs" />
     <None Include="Assets\PostProcessing\Resources\Shaders\DepthOfField.shader" />
     <None Include="Assets\PostProcessing\Resources\Shaders\MotionBlur.cginc" />
     <None Include="Assets\PostProcessing\Resources\Shaders\Fog.shader" />
