@@ -58,6 +58,7 @@ public class Spiral : MonoBehaviour {
     {
         if (isLerping){
             lerpSpeed = Mathf.Lerp(minMaxSpeed.x, minMaxSpeed.y, lerpAnimCurve.Evaluate(AudioAnalyser.bands[lerpBand]));
+            transform.localScale = new Vector3(transform.localScale.x, (AudioAnalyser.bands[lerpBand] * 15) + 2, transform.localScale.z);
             lerpPosTimer += Time.deltaTime * lerpSpeed;
             transform.localPosition = Vector3.Lerp(startLerp, endLerp, Mathf.Clamp01(lerpPosTimer));
             if (lerpPosTimer >= 1){
