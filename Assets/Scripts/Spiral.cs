@@ -5,8 +5,8 @@ using UnityEngine;
 public class Spiral : MonoBehaviour {
 
     public AudioAnalyser audioAnalyser;
-    public float theta, scale;
-    public int nStart, steps, max, interval;
+    public float theta, scale, interval;
+    public int nStart, steps, max;
     public Color trailColor;
     public Vector2 minMaxSpeed;
     public AnimationCurve lerpAnimCurve;
@@ -44,7 +44,7 @@ public class Spiral : MonoBehaviour {
     }
 
     void SetLerpPositions() {
-
+        lerpTime = Time.time;
         pos = CalcSpiral(theta, scale, n);
         startLerp = this.transform.localPosition;
         endLerp = new Vector3(pos.x, pos.y, 0);
