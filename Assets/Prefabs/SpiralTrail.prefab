@@ -9,45 +9,45 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1723428999409952}
+  m_RootGameObject: {fileID: 1765640951278512}
   m_IsPrefabAsset: 1
---- !u!1 &1723428999409952
+--- !u!1 &1765640951278512
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4576268372854496}
-  - component: {fileID: 96213120962224006}
-  - component: {fileID: 114791136225872210}
+  - component: {fileID: 4741627980427460}
+  - component: {fileID: 96595500104446618}
+  - component: {fileID: 114060774780266018}
   m_Layer: 0
-  m_Name: Spiral
+  m_Name: SpiralTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4576268372854496
+--- !u!4 &4741627980427460
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1723428999409952}
+  m_GameObject: {fileID: 1765640951278512}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.8532038, y: -5.3762817, z: 3.0604563}
+  m_LocalPosition: {x: -0.7049608, y: 1.2455897, z: -999.49884}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!96 &96213120962224006
+--- !u!96 &96595500104446618
 TrailRenderer:
   serializedVersion: 2
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1723428999409952}
+  m_GameObject: {fileID: 1765640951278512}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -57,7 +57,7 @@ TrailRenderer:
   m_ReflectionProbeUsage: 0
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 32e1389f6623b72439ecb71eb3390b85, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -80,13 +80,13 @@ TrailRenderer:
   m_Time: 5
   m_Parameters:
     serializedVersion: 2
-    widthMultiplier: 1
+    widthMultiplier: 0.1
     widthCurve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.31884003
+        value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -133,20 +133,20 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
---- !u!114 &114791136225872210
+--- !u!114 &114060774780266018
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1723428999409952}
+  m_GameObject: {fileID: 1765640951278512}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 89e3807c154d75241894238af98dc4f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  theta: 0
-  scale: 0
+  theta: 137.5
+  scale: 1
+  lerpInterval: 0.2
   nStart: 0
-  steps: 0
-  max: 0
-  lerpInterval: 0
+  steps: 1
+  max: 1000

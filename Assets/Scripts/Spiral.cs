@@ -4,27 +4,19 @@ using UnityEngine;
 
 public class Spiral : MonoBehaviour {
 
-    public AudioAnalyser analyser;
-    public float theta, scale;
-    public int nStart; // Starting number for n
-    public int steps, max; // Steps indicates number of trails to skip for lerping
-
-    private Material trailMaterial;
-    public Color trailColor;
+    public float theta, scale, lerpInterval;
+    public int nStart, steps, max;
     private int n, current;
     private bool isLerping;
-    private Vector3 lerpStart, lerpEnd; // End and start positions for a lerp
+    private TrailRenderer tr;
+    private Vector3 startLerp, endLerp;
     private Vector2 pos;
-    private TrailRenderer trailRenderer;
-    private float lerpTimer, lerpSpeed;
-    public Vector2 lerpMinMax;
-    public AnimationCurve lerpAnimCurve;
-
-
-    private Vector2 CalcSpiral(float calcTheta, float calcScale, int count)
+    private float lerpTime;
+   
+    private Vector2 CalcSpiral(float calcTheta, float calcScale, int i)
     {
-        float angle = count * (calcTheta * Mathf.Deg2Rad);
-        float r = calcScale * Mathf.Sqrt(count);
+        float angle = i * (calcTheta * Mathf.Deg2Rad);
+        float r = calcScale * Mathf.Sqrt(i);
         float x = r * (float)Mathf.Cos(angle);
         float y = r * (float)Mathf.Sin(angle);
         Vector2 position = new Vector2(x, y);
@@ -36,22 +28,18 @@ public class Spiral : MonoBehaviour {
         //trailRenderer = GetComponent<TrailRenderer>();
         //n = nStart;
         //transform.localPosition = CalcPT(theta, scale, n);
+        tr = GetComponent<TrailRenderer>();
         n = nStart;
-        trailRenderer = GetComponent<TrailRenderer>();
-        trailMaterial = new Material(trailRenderer.material);
-        trailMaterial.SetColor("_TintColor", trailColor);
-        trailRenderer.material = trailMaterial;
         transform.localPosition = CalcSpiral(theta, scale, n);
-        isLerping = true;
-        LerpTrails();
-
+        StartLerping();
     }
 
-    void LerpTrails()
-    {
+    void StartLerping() {
+        isLerping = true;
+        lerpTime = Time.time;
         pos = CalcSpiral(theta, scale, n);
-        lerpStart = this.transform.localPosition;
-        lerpEnd = new Vector3(pos.x, pos.y,0);
+        startLerp = this.transform.localPosition;
+        endLerp = new Vector3(pos.x, pos.y, 0);
     }
 
     // Use this for initialization
@@ -61,20 +49,28 @@ public class Spiral : MonoBehaviour {
 
     private void Update()
     {
-        if (isLerping)
-        {
-            lerpSpeed = Mathf.Lerp(lerpMinMax.x, lerpMinMax.y, lerpAnimCurve.Evaluate(analyser.binWidth));
-            lerpTimer += Time.deltaTime * lerpSpeed;
-            transform.localPosition = Vector3.Lerp(lerpStart, lerpEnd, Mathf.Clamp01(lerpTimer));
-            if (lerpTimer >= 1)
+
+    }
+
+    private void FixedUpdate()
+    {
+        if (isLerping){
+            float timeElapsed = Time.time - lerpTime;
+            float percentComplete = timeElapsed / lerpInterval;
+            transform.localPosition = Vector3.Lerp(startLerp, endLerp, percentComplete);
+            if(percentComplete >= 0.97f)
             {
-                lerpTimer -= 1;
+                transform.localPosition = endLerp;
                 n += steps;
                 current++;
-                LerpTrails();
+                if(current <= max){
+                    StartLerping();
+                }
+                else{
+                    isLerping = false;
+                }
             }
         }
-
     }
 
 }

@@ -34,7 +34,6 @@ public class SpiralVisualiser : MonoBehaviour {
         spiralScript.scale = 1;
         spiralScript.steps = 1;
         spiralScript.max = 1000;
-        spiralScript.lerpInterval = 0.1f;
     }
 
     void Spirals1()
@@ -55,7 +54,6 @@ public class SpiralVisualiser : MonoBehaviour {
             spiralScript.scale = 1;
             spiralScript.steps = 7;
             spiralScript.max = 1000;
-            spiralScript.lerpInterval = 0.1f;
         }
     }
 }
