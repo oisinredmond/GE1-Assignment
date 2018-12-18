@@ -15,7 +15,7 @@ public class Spiral : MonoBehaviour {
 
     private Material trailMat;
     private int n, current;
-    private bool isLerping;
+    private bool isLerping, forward;
     private TrailRenderer tr;
     private Vector3 startLerp, endLerp;
     private Vector2 pos;
@@ -67,9 +67,24 @@ public class Spiral : MonoBehaviour {
                 transform.localPosition = Vector3.Lerp(startLerp, endLerp, Mathf.Clamp01(lerpPosTimer));
                 if (lerpPosTimer >= 1)
                 {
+                    if(current >= max){
+                        forward = false;
+                        print("Flipped");
+                    }else if(current <= 0){
+                        print("Flipped");
+                        forward = true;
+                    }
+
                     lerpPosTimer -= 1;
-                    n += steps;
-                    current++;
+
+                    if(forward){
+                        n += steps;
+                        current++;
+                    }else{
+                        n -= steps;
+                        current++;
+                    }
+
                     SetLerpPositions();
                 }
             }
