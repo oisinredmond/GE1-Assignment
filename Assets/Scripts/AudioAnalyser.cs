@@ -7,8 +7,8 @@ public class AudioAnalyser : MonoBehaviour
 {
     AudioSource audioSource;
     public static int frameSize = 512;
-    public static float[] spectrum;
-    public static float[] bands;
+    public static float[] spectrum; // Range of frequencies divided into 512 averages
+    public static float[] bands;  // Divides spectrum into 7 psychoacoustic bands from subbass to brilliance
     public float binWidth;
     public float sampleRate;
 

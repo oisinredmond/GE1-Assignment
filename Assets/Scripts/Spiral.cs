@@ -68,27 +68,4 @@ public class Spiral : MonoBehaviour {
             }
         }
     }
-
-    /*
-    private void FixedUpdate()
-    {
-        if (isLerping){
-            float timeElapsed = Time.time - lerpTime;
-            float percentComplete = timeElapsed / lerpInterval;
-            transform.localPosition = Vector3.Lerp(startLerp, endLerp, percentComplete);
-            if(percentComplete >= 0.97f)
-            {
-                transform.localPosition = endLerp;
-                n += steps;
-                current++;
-                if(current <= max){
-                    StartLerping();
-                }
-                else{
-                    isLerping = false;
-                }
-            }
-        }
-    }*/
-
 }
