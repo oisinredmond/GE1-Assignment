@@ -9,9 +9,11 @@ public class Spiral : MonoBehaviour {
     public int nStart, steps, max;
     public Color trailColor;
     public Vector2 minMaxSpeed;
+    public Vector2 scaleAnimMinMax;
+    public AnimationCurve scaleAnimCurve;
     public AnimationCurve lerpAnimCurve;
     public int freqBand;
-    public bool lerpOnAudio;
+    public bool lerpOnAudio, scaling, scaleCurve;
 
     private Material trailMat;
     private int n, current;
@@ -19,7 +21,7 @@ public class Spiral : MonoBehaviour {
     private TrailRenderer tr;
     private Vector3 startLerp, endLerp;
     private Vector2 pos;
-    private float lerpPosTimer, lerpSpeed, lerpTime;
+    private float lerpPosTimer, lerpSpeed, lerpTime, scaleTimer;
    
     private Vector2 CalcSpiral(float calcTheta, float calcScale, int i)
     {
@@ -62,7 +64,7 @@ public class Spiral : MonoBehaviour {
             if (isLerping)
             {
                 lerpSpeed = Mathf.Lerp(minMaxSpeed.x, minMaxSpeed.y, lerpAnimCurve.Evaluate(AudioAnalyser.bands[freqBand]));
-                transform.localScale = new Vector3(transform.localScale.x, (AudioAnalyser.bands[freqBand] * 15) + 2, transform.localScale.z);
+                //transform.localScale = new Vector3(transform.localScale.x, (AudioAnalyser.bands[freqBand] * 15) + 2, transform.localScale.z);
                 lerpPosTimer += Time.deltaTime * lerpSpeed;
                 transform.localPosition = Vector3.Lerp(startLerp, endLerp, Mathf.Clamp01(lerpPosTimer));
                 if (lerpPosTimer >= 1)
