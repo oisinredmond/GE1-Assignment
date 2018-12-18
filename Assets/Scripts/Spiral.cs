@@ -5,15 +5,22 @@ using UnityEngine;
 public class Spiral : MonoBehaviour {
 
     public AudioAnalyser audioAnalyser;
-    public float theta, scale, interval, scaleAnimSpeed;
+    public int freqBand;
+
+    // Lerping
+    public float theta, scale;
     public int nStart, steps, max;
-    public Color trailColor;
+    public bool lerpOnAudio;
+    public float interval;
+    public AnimationCurve lerpAnimCurve;
     public Vector2 minMaxSpeed;
+    public Color trailColor;
+
+    // Scaling
+    public float scaleAnimSpeed;
     public Vector2 scaleAnimMinMax;
     public AnimationCurve scaleAnimCurve;
-    public AnimationCurve lerpAnimCurve;
-    public int freqBand;
-    public bool lerpOnAudio, scaling, scaleCurve;
+    public bool scaling, scaleCurve;
 
     private Material trailMat;
     private int n, current;
