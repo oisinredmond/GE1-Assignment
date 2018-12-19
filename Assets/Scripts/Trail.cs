@@ -2,16 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spiral : MonoBehaviour {
+public class Trail : MonoBehaviour {
 
     public AudioAnalyser audioAnalyser;
     public int freqBand;
 
     // Lerping
-    public float theta, scale;
-    public int nStart, steps, max;
+    public float theta, scale, interval;
+    public int nStart, steps;
     public bool lerpOnAudio;
-    public float interval;
     public AnimationCurve lerpAnimCurve;
     public Vector2 minMaxSpeed;
     public Color trailColor;
@@ -87,27 +86,13 @@ public class Spiral : MonoBehaviour {
             if (isLerping)
             {
                 lerpSpeed = Mathf.Lerp(minMaxSpeed.x, minMaxSpeed.y, lerpAnimCurve.Evaluate(AudioAnalyser.bands[freqBand]));
-                //transform.localScale = new Vector3(transform.localScale.x, (AudioAnalyser.bands[freqBand] * 15) + 2, transform.localScale.z);
                 lerpPosTimer += Time.deltaTime * lerpSpeed;
                 transform.localPosition = Vector3.Lerp(startLerp, endLerp, Mathf.Clamp01(lerpPosTimer));
                 if (lerpPosTimer >= 1)
                 {
-                    if(current == max){
-                        forward = false;
-                    }else if(current <= 0){
-                        forward = true;
-                    }
-
                     lerpPosTimer -= 1;
-
-                    if(forward){
-                        n += steps;
-                        current++;
-                    }else{
-                        n -= steps;
-                        current--;
-                    }
-
+                    n += steps;
+                    current++;
                     SetLerpPositions();
                 }
             }
@@ -121,14 +106,7 @@ public class Spiral : MonoBehaviour {
                 transform.localPosition = endLerp;
                 n += steps;
                 current++;
-                if (current < max)
-                {
-                    SetLerpPositions();
-                }
-                else
-                {
-                    isLerping = false;
-                }
+                SetLerpPositions();
             }
         }
     }
