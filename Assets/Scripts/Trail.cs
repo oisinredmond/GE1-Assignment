@@ -8,9 +8,9 @@ public class Trail : MonoBehaviour {
     public int freqBand;
 
     // Lerping
-    public float theta, scale, interval;
-    public int nStart, steps, max;
-    public bool lerpOnAudio, useLerp;
+    public float theta, scale;
+    public int nStart, steps, max, interval;
+    public bool lerpOnAudio;
     public AnimationCurve lerpAnimCurve;
     public Vector2 minMaxSpeed;
     public Color trailColor;
@@ -21,49 +21,44 @@ public class Trail : MonoBehaviour {
     public AnimationCurve scaleAnimCurve;
     public bool scaling, scaleCurve;
 
-    private Material trailMat;
-    private int n, current;
-    private bool isLerping, invert;
+    private Material trailMaterial;
+    private int n;
+    private bool invert;
     private TrailRenderer tr;
     private Vector3 startLerp, endLerp;
     private Vector2 pos;
     private float lerpPosTimer, lerpSpeed, lerpTime, scaleTimer, currScale;
-    private int[] stepValues = {5, 20, 30, 40, 50, 60, 70, 80, 90, 100};
+    private int[] stepValues = {2, 15, 30, 45, 50, 60, 72, 87, 90, 120};
    
-    private Vector2 CalcSpiral(float calcTheta, float calcScale, int i)
+
+    // Calculates position based on angle, scale and n
+    private Vector2 CalcSpiral(float calcTheta, float calcScale, int num)
     {
-        float angle = i * (calcTheta * Mathf.Deg2Rad);
-        float r = calcScale * Mathf.Sqrt(i);
-        float x = r * (float)Mathf.Cos(angle);
-        float y = r * (float)Mathf.Sin(angle);
-        Vector2 position = new Vector2(x, y);
+        float angle = num * (calcTheta * Mathf.Deg2Rad);
+        float r = calcScale * Mathf.Sqrt(num);
+        Vector2 position = new Vector2(r * (float)Mathf.Cos(angle), r * (float)Mathf.Sin(angle));
         return position;
     }
 
+    // Sets trail renderer material and color, assigns user defined variables
     private void Awake()
     {
         currScale = scale;
-        isLerping = true;
         tr = GetComponent<TrailRenderer>();
-        trailMat = new Material(tr.material);
-        trailMat.SetColor("_TintColor", trailColor);
-        tr.material = trailMat;
+        trailMaterial = new Material(tr.material);
+        trailMaterial.SetColor("_TintColor", trailColor);
+        tr.material = trailMaterial;
         n = nStart;
         transform.localPosition = CalcSpiral(theta, currScale, n);
         SetLerpPositions();
     }
 
+    // Sets start and end positions for current lerp
     void SetLerpPositions() {
-        lerpTime = Time.time;
         pos = CalcSpiral(theta, currScale, n);
         startLerp = this.transform.localPosition;
         endLerp = new Vector3(pos.x, pos.y, 0);
     }
-
-    // Use this for initialization
-    void Start () {
-		
-	}
 
     private void Update()
     {
@@ -73,48 +68,39 @@ public class Trail : MonoBehaviour {
 
         if (lerpOnAudio) {
             AudioLerp();
-        } else if(useLerp){
-            for (int i = 0; i < 10; i++)
-            {
-                if(Input.GetKeyDown("" + i))
-                {
+        } else {
+            // Allows user to choose step size of outer trails - this changes the shape of their path
+            for (int i = 0; i < 10; i++){ 
+                if(Input.GetKeyDown("" + i)){
                     steps = stepValues[i];
                 }
             }
-            if (Input.GetKeyDown("space"))
-            {
+            if (Input.GetKeyDown("space")) {
                 steps = 0;
             }
             RegularLerp();
         }
-        else
-        {
-            pos = CalcSpiral(theta, scale, n);
-            transform.localPosition = new Vector3(pos.x, pos.y, 0);
-            n += steps;
-        }
     }
 
 
+    // Speed of a trail lerp is determined by the value of chosed frequncy band
     void AudioLerp()
     {
-        if (isLerping)
+        lerpSpeed = Mathf.Lerp(minMaxSpeed.x, minMaxSpeed.y, lerpAnimCurve.Evaluate(AudioAnalyser.bands[freqBand]));
+        lerpPosTimer += Time.deltaTime * lerpSpeed;
+        transform.localPosition = Vector3.Lerp(startLerp, endLerp, Mathf.Clamp01(lerpPosTimer));
+        if (lerpPosTimer >= 1)
         {
-            lerpSpeed = Mathf.Lerp(minMaxSpeed.x, minMaxSpeed.y, lerpAnimCurve.Evaluate(AudioAnalyser.bands[freqBand]));
-            lerpPosTimer += Time.deltaTime * lerpSpeed;
-            transform.localPosition = Vector3.Lerp(startLerp, endLerp, Mathf.Clamp01(lerpPosTimer));
-            if (lerpPosTimer >= 1)
-            {
-                lerpPosTimer -= 1;
-                n += steps;
-                SetLerpPositions();
-            }
+            lerpPosTimer -= 1;
+            n += steps;
+            SetLerpPositions();
         }
     }
+
 
     void RegularLerp()
     {
-        float timeElapsed = Time.time - lerpTime; // Check how far along the current lerp is
+        float timeElapsed = Time.time - lerpTime;
         transform.localPosition = Vector3.Lerp(startLerp, endLerp, timeElapsed / interval);
         if (timeElapsed / interval >= 0.97f)
         {
@@ -142,8 +128,10 @@ public class Trail : MonoBehaviour {
 
     }
 
+    // Sets the currScale variable based on value in chosen audio frequency band
     void Scale()
     {
+        // Scale animation curve allows a threshold of 
         if (scaleCurve)
         {
             scaleTimer += (scaleAnimSpeed * AudioAnalyser.bands[freqBand]) * Time.deltaTime;
