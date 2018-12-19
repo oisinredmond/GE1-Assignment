@@ -1281,7 +1281,7 @@ Prefab:
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
       propertyPath: max
-      value: 10000
+      value: 13000
       objectReference: {fileID: 0}
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
@@ -1512,7 +1512,7 @@ Prefab:
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
       propertyPath: nStart
-      value: 8270
+      value: 9270
       objectReference: {fileID: 0}
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
@@ -1957,7 +1957,7 @@ Prefab:
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
       propertyPath: nStart
-      value: 8000
+      value: 9000
       objectReference: {fileID: 0}
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
@@ -3219,7 +3219,7 @@ Prefab:
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
       propertyPath: scaleCurve
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
@@ -3669,7 +3669,7 @@ Prefab:
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
       propertyPath: scaleCurve
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
@@ -3878,7 +3878,7 @@ Prefab:
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
       propertyPath: trailColor.b
-      value: 0.07469678
+      value: 0.07450981
       objectReference: {fileID: 0}
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
@@ -3893,7 +3893,7 @@ Prefab:
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
       propertyPath: nStart
-      value: 8180
+      value: 9180
       objectReference: {fileID: 0}
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
@@ -4563,7 +4563,7 @@ Prefab:
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
       propertyPath: max
-      value: 10000
+      value: 11000
       objectReference: {fileID: 0}
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
@@ -5052,7 +5052,7 @@ Prefab:
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
       propertyPath: scaleCurve
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
@@ -5194,7 +5194,7 @@ Prefab:
         type: 2}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: ffdd7359a9e502f49bc81d632f90488d, type: 3}
+      objectReference: {fileID: 8300000, guid: fe1fdc7f7bd42524eb9f94546a533027, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d091a694aba13da47a2108c5a183d9cf, type: 2}
   m_IsPrefabAsset: 0
@@ -6464,7 +6464,7 @@ Prefab:
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
       propertyPath: scaleCurve
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
@@ -6646,7 +6646,7 @@ Prefab:
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
       propertyPath: nStart
-      value: 8090
+      value: 9090
       objectReference: {fileID: 0}
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
