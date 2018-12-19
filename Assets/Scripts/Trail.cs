@@ -10,7 +10,7 @@ public class Trail : MonoBehaviour {
     // Lerping
     public float theta, scale, interval;
     public int nStart, steps, max;
-    public bool lerpOnAudio;
+    public bool lerpOnAudio, useLerp;
     public AnimationCurve lerpAnimCurve;
     public Vector2 minMaxSpeed;
     public Color trailColor;
@@ -73,7 +73,7 @@ public class Trail : MonoBehaviour {
 
         if (lerpOnAudio) {
             AudioLerp();
-        } else {
+        } else if(useLerp){
             for (int i = 0; i < 10; i++)
             {
                 if(Input.GetKeyDown("" + i))
@@ -86,6 +86,12 @@ public class Trail : MonoBehaviour {
                 steps = 0;
             }
             RegularLerp();
+        }
+        else
+        {
+            pos = CalcSpiral(theta, scale, n);
+            transform.localPosition = new Vector3(pos.x, pos.y, 0);
+            n += steps;
         }
     }
 

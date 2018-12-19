@@ -166,7 +166,7 @@ Prefab:
         type: 2}
       propertyPath: audioAnalyser
       value: 
-      objectReference: {fileID: 1961486394}
+      objectReference: {fileID: 0}
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
       propertyPath: lerpBand
@@ -485,6 +485,11 @@ Prefab:
       propertyPath: m_SortingOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
+        type: 2}
+      propertyPath: useLerp
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 471c9cccf92e1454bb26d1b630af091a, type: 2}
   m_IsPrefabAsset: 0
@@ -576,7 +581,7 @@ Prefab:
         type: 2}
       propertyPath: audioAnalyser
       value: 
-      objectReference: {fileID: 1961486394}
+      objectReference: {fileID: 0}
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
       propertyPath: lerpBand
@@ -895,6 +900,11 @@ Prefab:
       propertyPath: m_SortingOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
+        type: 2}
+      propertyPath: useLerp
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 471c9cccf92e1454bb26d1b630af091a, type: 2}
   m_IsPrefabAsset: 0
@@ -1022,7 +1032,7 @@ Prefab:
         type: 2}
       propertyPath: audioAnalyser
       value: 
-      objectReference: {fileID: 1961486394}
+      objectReference: {fileID: 0}
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
       propertyPath: lerpBand
@@ -1422,8 +1432,60 @@ Prefab:
       propertyPath: m_Parameters.generateLightingData
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
+        type: 2}
+      propertyPath: useLerp
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 471c9cccf92e1454bb26d1b630af091a, type: 2}
+  m_IsPrefabAsset: 0
+--- !u!1001 &238368939
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4703086988225714, guid: d091a694aba13da47a2108c5a183d9cf, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4703086988225714, guid: d091a694aba13da47a2108c5a183d9cf, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4703086988225714, guid: d091a694aba13da47a2108c5a183d9cf, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4703086988225714, guid: d091a694aba13da47a2108c5a183d9cf, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4703086988225714, guid: d091a694aba13da47a2108c5a183d9cf, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4703086988225714, guid: d091a694aba13da47a2108c5a183d9cf, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4703086988225714, guid: d091a694aba13da47a2108c5a183d9cf, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4703086988225714, guid: d091a694aba13da47a2108c5a183d9cf, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 82520663588838534, guid: d091a694aba13da47a2108c5a183d9cf,
+        type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 82c2b36a4508d4f41a4d4865af6ad3c6, type: 3}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d091a694aba13da47a2108c5a183d9cf, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1001 &291438562
 Prefab:
@@ -1478,7 +1540,7 @@ Prefab:
         type: 2}
       propertyPath: audioAnalyser
       value: 
-      objectReference: {fileID: 1961486394}
+      objectReference: {fileID: 0}
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
       propertyPath: lerpBand
@@ -1512,7 +1574,7 @@ Prefab:
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
       propertyPath: nStart
-      value: 9270
+      value: 10270
       objectReference: {fileID: 0}
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
@@ -1731,7 +1793,7 @@ Prefab:
     - target: {fileID: 96595500104446618, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
       propertyPath: m_Parameters.widthMultiplier
-      value: 0.5
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
@@ -1867,6 +1929,11 @@ Prefab:
       propertyPath: interval
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
+        type: 2}
+      propertyPath: useLerp
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 471c9cccf92e1454bb26d1b630af091a, type: 2}
   m_IsPrefabAsset: 0
@@ -1928,7 +1995,7 @@ Prefab:
         type: 2}
       propertyPath: audioAnalyser
       value: 
-      objectReference: {fileID: 1961486394}
+      objectReference: {fileID: 0}
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
       propertyPath: lerpBand
@@ -1962,7 +2029,7 @@ Prefab:
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
       propertyPath: nStart
-      value: 9000
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
@@ -2181,7 +2248,7 @@ Prefab:
     - target: {fileID: 96595500104446618, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
       propertyPath: m_Parameters.widthMultiplier
-      value: 0.5
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
@@ -2317,6 +2384,11 @@ Prefab:
       propertyPath: interval
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
+        type: 2}
+      propertyPath: useLerp
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 471c9cccf92e1454bb26d1b630af091a, type: 2}
   m_IsPrefabAsset: 0
@@ -2336,7 +2408,6 @@ GameObject:
   - component: {fileID: 534669904}
   - component: {fileID: 534669903}
   - component: {fileID: 534669906}
-  - component: {fileID: 534669907}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: Untagged
@@ -2398,7 +2469,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 534669902}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: -50.83}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1205662997}
@@ -2417,17 +2488,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   profile: {fileID: 11400000, guid: c7d524145bfa81846825728a77d542c8, type: 2}
---- !u!114 &534669907
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 534669902}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dbc6c11b0f15d19449afed51a571babe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &562633716
 Prefab:
   m_ObjectHideFlags: 0
@@ -2481,7 +2541,7 @@ Prefab:
         type: 2}
       propertyPath: audioAnalyser
       value: 
-      objectReference: {fileID: 1961486394}
+      objectReference: {fileID: 0}
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
       propertyPath: lerpBand
@@ -2889,6 +2949,11 @@ Prefab:
       propertyPath: m_SortingOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
+        type: 2}
+      propertyPath: useLerp
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 471c9cccf92e1454bb26d1b630af091a, type: 2}
   m_IsPrefabAsset: 0
@@ -2945,7 +3010,7 @@ Prefab:
         type: 2}
       propertyPath: audioAnalyser
       value: 
-      objectReference: {fileID: 1961486394}
+      objectReference: {fileID: 0}
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
       propertyPath: lerpBand
@@ -3227,7 +3292,7 @@ Prefab:
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
       propertyPath: scaleAnimMinMax.y
-      value: 0.55
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
@@ -3329,6 +3394,11 @@ Prefab:
       propertyPath: m_SortingOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
+        type: 2}
+      propertyPath: useLerp
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 471c9cccf92e1454bb26d1b630af091a, type: 2}
   m_IsPrefabAsset: 0
@@ -3395,7 +3465,7 @@ Prefab:
         type: 2}
       propertyPath: audioAnalyser
       value: 
-      objectReference: {fileID: 1961486394}
+      objectReference: {fileID: 0}
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
       propertyPath: lerpBand
@@ -3677,7 +3747,7 @@ Prefab:
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
       propertyPath: scaleAnimMinMax.y
-      value: 0.55
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
@@ -3779,6 +3849,11 @@ Prefab:
       propertyPath: m_SortingOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
+        type: 2}
+      propertyPath: useLerp
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 471c9cccf92e1454bb26d1b630af091a, type: 2}
   m_IsPrefabAsset: 0
@@ -3838,7 +3913,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1205662997}
   m_Layer: 0
-  m_Name: 2D_Trails
+  m_Name: Trails
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3851,7 +3926,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1205662996}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 150}
+  m_LocalPosition: {x: 0, y: 0, z: 180}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 113251074}
@@ -3915,7 +3990,7 @@ Prefab:
         type: 2}
       propertyPath: audioAnalyser
       value: 
-      objectReference: {fileID: 1961486394}
+      objectReference: {fileID: 0}
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
       propertyPath: lerpBand
@@ -3949,7 +4024,7 @@ Prefab:
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
       propertyPath: nStart
-      value: 9180
+      value: 10180
       objectReference: {fileID: 0}
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
@@ -4168,7 +4243,7 @@ Prefab:
     - target: {fileID: 96595500104446618, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
       propertyPath: m_Parameters.widthMultiplier
-      value: 0.5
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
@@ -4304,6 +4379,11 @@ Prefab:
       propertyPath: interval
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
+        type: 2}
+      propertyPath: useLerp
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 471c9cccf92e1454bb26d1b630af091a, type: 2}
   m_IsPrefabAsset: 0
@@ -4360,7 +4440,7 @@ Prefab:
         type: 2}
       propertyPath: audioAnalyser
       value: 
-      objectReference: {fileID: 1961486394}
+      objectReference: {fileID: 0}
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
       propertyPath: lerpBand
@@ -4760,6 +4840,11 @@ Prefab:
       propertyPath: m_Parameters.generateLightingData
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
+        type: 2}
+      propertyPath: useLerp
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 471c9cccf92e1454bb26d1b630af091a, type: 2}
   m_IsPrefabAsset: 0
@@ -4816,7 +4901,7 @@ Prefab:
         type: 2}
       propertyPath: audioAnalyser
       value: 
-      objectReference: {fileID: 1961486394}
+      objectReference: {fileID: 0}
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
       propertyPath: lerpBand
@@ -5098,7 +5183,7 @@ Prefab:
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
       propertyPath: scaleAnimMinMax.y
-      value: 0.55
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
@@ -5200,6 +5285,11 @@ Prefab:
       propertyPath: m_SortingOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
+        type: 2}
+      propertyPath: useLerp
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 471c9cccf92e1454bb26d1b630af091a, type: 2}
   m_IsPrefabAsset: 0
@@ -5208,57 +5298,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4741627980427460, guid: 471c9cccf92e1454bb26d1b630af091a,
     type: 2}
   m_PrefabInternal: {fileID: 291438562}
---- !u!1001 &1414012979
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4703086988225714, guid: d091a694aba13da47a2108c5a183d9cf, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4703086988225714, guid: d091a694aba13da47a2108c5a183d9cf, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4703086988225714, guid: d091a694aba13da47a2108c5a183d9cf, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4703086988225714, guid: d091a694aba13da47a2108c5a183d9cf, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4703086988225714, guid: d091a694aba13da47a2108c5a183d9cf, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4703086988225714, guid: d091a694aba13da47a2108c5a183d9cf, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4703086988225714, guid: d091a694aba13da47a2108c5a183d9cf, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4703086988225714, guid: d091a694aba13da47a2108c5a183d9cf, type: 2}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1885695528674246, guid: d091a694aba13da47a2108c5a183d9cf, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 82520663588838534, guid: d091a694aba13da47a2108c5a183d9cf,
-        type: 2}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: fe1fdc7f7bd42524eb9f94546a533027, type: 3}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d091a694aba13da47a2108c5a183d9cf, type: 2}
-  m_IsPrefabAsset: 0
 --- !u!4 &1415537809 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4741627980427460, guid: 471c9cccf92e1454bb26d1b630af091a,
@@ -5426,7 +5465,7 @@ Prefab:
         type: 2}
       propertyPath: audioAnalyser
       value: 
-      objectReference: {fileID: 1961486394}
+      objectReference: {fileID: 0}
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
       propertyPath: lerpBand
@@ -5834,6 +5873,11 @@ Prefab:
       propertyPath: m_SortingOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
+        type: 2}
+      propertyPath: useLerp
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 471c9cccf92e1454bb26d1b630af091a, type: 2}
   m_IsPrefabAsset: 0
@@ -5890,7 +5934,7 @@ Prefab:
         type: 2}
       propertyPath: audioAnalyser
       value: 
-      objectReference: {fileID: 1961486394}
+      objectReference: {fileID: 0}
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
       propertyPath: lerpBand
@@ -6209,6 +6253,11 @@ Prefab:
       propertyPath: m_SortingOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
+        type: 2}
+      propertyPath: useLerp
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 471c9cccf92e1454bb26d1b630af091a, type: 2}
   m_IsPrefabAsset: 0
@@ -6265,7 +6314,7 @@ Prefab:
         type: 2}
       propertyPath: audioAnalyser
       value: 
-      objectReference: {fileID: 1961486394}
+      objectReference: {fileID: 0}
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
       propertyPath: lerpBand
@@ -6547,7 +6596,7 @@ Prefab:
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
       propertyPath: scaleAnimMinMax.y
-      value: 0.55
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
@@ -6649,6 +6698,11 @@ Prefab:
       propertyPath: m_SortingOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
+        type: 2}
+      propertyPath: useLerp
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 471c9cccf92e1454bb26d1b630af091a, type: 2}
   m_IsPrefabAsset: 0
@@ -6710,7 +6764,7 @@ Prefab:
         type: 2}
       propertyPath: audioAnalyser
       value: 
-      objectReference: {fileID: 1961486394}
+      objectReference: {fileID: 0}
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
       propertyPath: lerpBand
@@ -6744,7 +6798,7 @@ Prefab:
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
       propertyPath: nStart
-      value: 9090
+      value: 10090
       objectReference: {fileID: 0}
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
@@ -6963,7 +7017,7 @@ Prefab:
     - target: {fileID: 96595500104446618, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
       propertyPath: m_Parameters.widthMultiplier
-      value: 0.5
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
@@ -7099,15 +7153,14 @@ Prefab:
       propertyPath: interval
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
+        type: 2}
+      propertyPath: useLerp
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 471c9cccf92e1454bb26d1b630af091a, type: 2}
   m_IsPrefabAsset: 0
---- !u!114 &1961486394 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114506607753878224, guid: d091a694aba13da47a2108c5a183d9cf,
-    type: 2}
-  m_PrefabInternal: {fileID: 1414012979}
-  m_Script: {fileID: 11500000, guid: d9a8156c1486d884898fa6e2772b15b1, type: 3}
 --- !u!1001 &2052541979
 Prefab:
   m_ObjectHideFlags: 0
@@ -7161,7 +7214,7 @@ Prefab:
         type: 2}
       propertyPath: audioAnalyser
       value: 
-      objectReference: {fileID: 1961486394}
+      objectReference: {fileID: 0}
     - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
         type: 2}
       propertyPath: lerpBand
@@ -7479,6 +7532,11 @@ Prefab:
         type: 2}
       propertyPath: m_SortingOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114060774780266018, guid: 471c9cccf92e1454bb26d1b630af091a,
+        type: 2}
+      propertyPath: useLerp
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 471c9cccf92e1454bb26d1b630af091a, type: 2}
