@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿/*  Oisin Redmond - C154922202 - DT228/4
+    Game Engines 1 - Assignment 1
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,17 +16,15 @@ public class AudioAnalyser : MonoBehaviour
     public float binWidth;
     public float sampleRate;
 
-    // Use this for initialization
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
         spectrum = new float[frameSize];
-        bands = new float[(int)Mathf.Log(frameSize, 2)];
+        bands = new float[(int)Mathf.Log(frameSize, 2)]; // Log 512 base 2
         sampleRate = AudioSettings.outputSampleRate;
         binWidth = AudioSettings.outputSampleRate / 2 / frameSize;
     }
 
-    // Update is called once per frame
     void Update()
     {
         GetSpectrumData();
@@ -34,6 +36,7 @@ public class AudioAnalyser : MonoBehaviour
         audioSource.GetSpectrumData(spectrum, 0, FFTWindow.Hamming);
     }
 
+    // Divides spectrum data into 7 psychoacoustic bands from subbass to brilliance
     void GetFrequencyBands()
     {
         for (int i = 0; i < bands.Length; i++)
@@ -46,7 +49,7 @@ public class AudioAnalyser : MonoBehaviour
             {
                 average += spectrum[j] * (j + 1);
             }
-            average /= (float)width;
+            average /= (float)width; // Average frequency for each psychoacoustic band at a given time
             bands[i] = average;
         }
     }

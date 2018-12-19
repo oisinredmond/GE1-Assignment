@@ -1,9 +1,14 @@
-﻿using System.Collections;
+﻿/*  Oisin Redmond - C154922202 - DT228/4
+    Game Engines 1 - Assignment 1
+ */
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Trail : MonoBehaviour {
 
+    // Audio
     public AudioAnalyser audioAnalyser;
     public int freqBand;
 
@@ -21,6 +26,7 @@ public class Trail : MonoBehaviour {
     public AnimationCurve scaleAnimCurve;
     public bool scaling, scaleCurve;
 
+    // Miscellaneous
     private Material trailMaterial;
     private int n;
     private bool invert;
@@ -55,6 +61,7 @@ public class Trail : MonoBehaviour {
 
     // Sets start and end positions for current lerp
     void SetLerpPositions() {
+        lerpTime = Time.time;
         pos = CalcSpiral(theta, currScale, n);
         startLerp = this.transform.localPosition;
         endLerp = new Vector3(pos.x, pos.y, 0);
