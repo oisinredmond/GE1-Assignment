@@ -28,6 +28,7 @@ public class Trail : MonoBehaviour {
     private Vector3 startLerp, endLerp;
     private Vector2 pos;
     private float lerpPosTimer, lerpSpeed, lerpTime, scaleTimer, currScale;
+    private int[] stepValues = {5, 20, 30, 40, 50, 60, 70, 80, 90, 100};
    
     private Vector2 CalcSpiral(float calcTheta, float calcScale, int i)
     {
@@ -72,8 +73,18 @@ public class Trail : MonoBehaviour {
 
         if (lerpOnAudio) {
             AudioLerp();
-        }else {
-
+        } else {
+            for (int i = 0; i < 10; i++)
+            {
+                if(Input.GetKeyDown("" + i))
+                {
+                    steps = stepValues[i];
+                }
+            }
+            if (Input.GetKeyDown("space"))
+            {
+                steps = 0;
+            }
             RegularLerp();
         }
     }
