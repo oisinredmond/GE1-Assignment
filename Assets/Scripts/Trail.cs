@@ -9,7 +9,7 @@ public class Trail : MonoBehaviour {
 
     // Lerping
     public float theta, scale, interval;
-    public int nStart, steps;
+    public int nStart, steps, max;
     public bool lerpOnAudio;
     public AnimationCurve lerpAnimCurve;
     public Vector2 minMaxSpeed;
@@ -23,7 +23,7 @@ public class Trail : MonoBehaviour {
 
     private Material trailMat;
     private int n, current;
-    private bool isLerping, forward;
+    private bool isLerping, invert;
     private TrailRenderer tr;
     private Vector3 startLerp, endLerp;
     private Vector2 pos;
@@ -66,48 +66,79 @@ public class Trail : MonoBehaviour {
 
     private void Update()
     {
-        if (scaling){
-            if (scaleCurve){
-                scaleTimer += (scaleAnimSpeed * AudioAnalyser.bands[freqBand]) * Time.deltaTime;
-                if(scaleTimer >= 1)
-                {
-                    scaleTimer -= 1;
-                }
-                currScale = Mathf.Lerp(scaleAnimMinMax.x, scaleAnimMinMax.y, scaleAnimCurve.Evaluate(scaleTimer));
+        if (scaling) {
+            Scale();
+        }
+
+        if (lerpOnAudio) {
+            AudioLerp();
+        }else {
+
+            RegularLerp();
+        }
+    }
+
+
+    void AudioLerp()
+    {
+        if (isLerping)
+        {
+            lerpSpeed = Mathf.Lerp(minMaxSpeed.x, minMaxSpeed.y, lerpAnimCurve.Evaluate(AudioAnalyser.bands[freqBand]));
+            lerpPosTimer += Time.deltaTime * lerpSpeed;
+            transform.localPosition = Vector3.Lerp(startLerp, endLerp, Mathf.Clamp01(lerpPosTimer));
+            if (lerpPosTimer >= 1)
+            {
+                lerpPosTimer -= 1;
+                n += steps;
+                SetLerpPositions();
+            }
+        }
+    }
+
+    void RegularLerp()
+    {
+        float timeElapsed = Time.time - lerpTime; // Check how far along the current lerp is
+        transform.localPosition = Vector3.Lerp(startLerp, endLerp, timeElapsed / interval);
+        if (timeElapsed / interval >= 0.97f)
+        {
+            if (n >= max)
+            {
+                invert = true;
+            }
+            else if (n <= nStart)
+            {
+                invert = false;
+            }
+
+            if (invert)
+            {
+                n -= steps;
             }
             else
             {
-                currScale = Mathf.Lerp(scaleAnimMinMax.x, scaleAnimMinMax.y, AudioAnalyser.bands[freqBand]);
+                n += steps;
             }
+
+            transform.localPosition = endLerp;
+            SetLerpPositions();
         }
 
-        if (lerpOnAudio)
+    }
+
+    void Scale()
+    {
+        if (scaleCurve)
         {
-            if (isLerping)
+            scaleTimer += (scaleAnimSpeed * AudioAnalyser.bands[freqBand]) * Time.deltaTime;
+            if (scaleTimer >= 1)
             {
-                lerpSpeed = Mathf.Lerp(minMaxSpeed.x, minMaxSpeed.y, lerpAnimCurve.Evaluate(AudioAnalyser.bands[freqBand]));
-                lerpPosTimer += Time.deltaTime * lerpSpeed;
-                transform.localPosition = Vector3.Lerp(startLerp, endLerp, Mathf.Clamp01(lerpPosTimer));
-                if (lerpPosTimer >= 1)
-                {
-                    lerpPosTimer -= 1;
-                    n += steps;
-                    current++;
-                    SetLerpPositions();
-                }
+                scaleTimer -= 1;
             }
+            currScale = Mathf.Lerp(scaleAnimMinMax.x, scaleAnimMinMax.y, scaleAnimCurve.Evaluate(scaleTimer));
         }
         else
         {
-            float timeElapsed = Time.time - lerpTime; // Check how far along the current lerp is
-            transform.localPosition = Vector3.Lerp(startLerp, endLerp, timeElapsed / interval);
-            if (timeElapsed / interval >= 0.97f)
-            {
-                transform.localPosition = endLerp;
-                n += steps;
-                current++;
-                SetLerpPositions();
-            }
+            currScale = Mathf.Lerp(scaleAnimMinMax.x, scaleAnimMinMax.y, AudioAnalyser.bands[freqBand]);
         }
     }
 }
