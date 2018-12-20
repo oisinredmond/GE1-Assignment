@@ -14,6 +14,9 @@ can lerp to produce interesting visuals. The formula used to create a phyllotaxi
 
 The angle from the center of the spiral for each point is calculated using **n X theta**. The radius is calculated using **scale X sqrt(n)**. These values can be converted into **x** and **y** coordinates for use in the unity engine by multiplying the radius by Cos and Sin of the angle.
 
+# Lerping Trails
+The audio visualiser uses the phyllotaxis spiral formula to map points on the x and y planes of the unity engine based on the specified angle, scale and starting iteration. These points can then be used as start and end points for trail renderers to lerp to and from. Using the audio analyser, the speed of these lerping trails can be set to react to different frequency bands. The scale value for the phyllotaxis formula can also be based on these frequency bands. This produces trail renderers that react in real time to audio signals.
+
 # Video Demo:
 [![YouTube](http://img.youtube.com/vi/ZjWBGvVb7Vg/0.jpg)](https://www.youtube.com/watch?v=ZjWBGvVb7Vg)
 
